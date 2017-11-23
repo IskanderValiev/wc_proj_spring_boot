@@ -62,6 +62,10 @@ public class User {
     private State state;
 
     private String tempPassword;
+
+    @Column(name = "link")
+    private String hashLink;
+
 //    @OneToMany(mappedBy = "author")
 //    private List<Comment> comments;
 }

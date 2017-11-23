@@ -1,11 +1,11 @@
 @font-face {
     font-family: Dusha;
-    src: url('http://localhost:8080/fonts/Dusha - FIFA World Cup 2018.otf');
+    src: url('/fonts/Dusha - FIFA World Cup 2018.otf');
 }
 
 body {
     font-family: "Dusha", sans-serif;
-    background-image: url('http://localhost:8080/images/background.png');
+    background-image: url('/images/background.png');
     color: #ffffff;
 }
 

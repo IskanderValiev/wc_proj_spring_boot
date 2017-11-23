@@ -4,13 +4,8 @@ package ru.isko.repositories.news;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.isko.models.News;
 
-public interface NewsRepository extends JpaRepository<News, Long> {
+import java.util.List;
 
-//    List<News> getAllNews();
-//
-//    List<News> getAllArticles();
-//
-//    List<News> getAllBlogs();
-//
-//    List<News> getAll();
+public interface NewsRepository extends JpaRepository<News, Long> {
+    List<News> findByType(String type);
 }

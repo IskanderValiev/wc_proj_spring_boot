@@ -10,11 +10,11 @@
     <style type="text/css">
         @font-face {
             font-family: Dusha;
-            src: url('http://localhost:8080/fonts/Dusha - FIFA World Cup 2018.otf');
+            src: url('/fonts/Dusha - FIFA World Cup 2018.otf');
         }
 
         body {
-            background-image: url('http://localhost:8080/images/background.png');
+            background-image: url('/images/background.png');
             font-family: Dusha, sans-serif;
             color: #ffffff;
         }
@@ -43,7 +43,7 @@
 
         .header input[type="submit"] {
             font-family: Dusha;
-            background-image: url('http://localhost:8080/images/background.png');
+            background-image: url('/images/background.png');
             color: #ffffff;
             font-size: 15px;
             cursor: pointer;
@@ -91,7 +91,7 @@
 
         .reg-form input[type="submit"] {
             font-family: Dusha;
-            background-image: url('http://localhost:8080/images/background.png');
+            background-image: url('/images/background.png');
             color: #ffffff;
             border-radius: 20px;
             cursor: pointer;
@@ -108,7 +108,7 @@
             width: 200px;
             height: 50px;
             border-radius: 20px;
-            background-image: url('http://localhost:8080/images/background.png');
+            background-image: url('/images/background.png');
             color: #CCCC99;
             font-size: 18px;
             cursor: pointer;
@@ -125,9 +125,8 @@
     </style>
     <script>
         function error() {
-            alert("Input login or password is not correct.");
+            alert("Login or password is not correct.");
         }
-
     </script>
 </head>
 <body>
@@ -157,7 +156,7 @@
     <div class="content">
 
         <div class="zabivaka">
-            <img src="http://localhost:8080/images/zabivaka.png" width=70% height=70%>
+            <img src="/images/zabivaka.png" width=70% height=70%>
         </div>
 
         <form action="/signup" method="POST" class="reg">
@@ -331,7 +330,7 @@
         </form>
     </div>
     <div class="footer">
-        <img src="http://localhost:8080/images/sponsors.png">
+        <img src="/images/sponsors.png">
     </div>
 </div>
 </body>

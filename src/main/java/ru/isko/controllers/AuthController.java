@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import ru.isko.models.User;
 import ru.isko.repositories.users.UsersRepository;
+import ru.isko.security.role.Role;
 import ru.isko.services.AdminService;
 import ru.isko.services.AuthenticationService;
 import ru.isko.services.SystemService;
@@ -61,10 +62,16 @@ public class AuthController {
     @GetMapping("/")
     public String root(Authentication authentication) {
         if (authentication != null) {
-            return "redirect:/user/profile";
+            User user = authenticationService.getUser(authentication);
+            if (user.getRole().equals(Role.USER)) {
+                return "redirect:/user/profile";
+            } else if (user.getRole().equals(Role.ADMIN)) {
+                return "redirect:/admin/users";
+            }
         }
         return "redirect:/signin";
     }
+
 
     @GetMapping("/user/profile")
     public String getProfilePage(Authentication authentication, @ModelAttribute("model") ModelMap modelMap) {

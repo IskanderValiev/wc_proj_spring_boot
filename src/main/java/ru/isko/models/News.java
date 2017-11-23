@@ -35,7 +35,6 @@ public class News {
     @Column(name = "news_type")
     private String type;
 
-//    @OneToMany(mappedBy = "news")
-//    private Set<Comment> commentSet;
-
+    @OneToMany(mappedBy = "news")
+    private Set<Comment> commentSet;
 }

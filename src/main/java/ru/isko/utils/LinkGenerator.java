@@ -20,7 +20,7 @@ public class LinkGenerator {
     private static final String PUNCTUATION = "_-~.";
 
     public String generate() {
-        return generate((LOWER + UPPER + DIGITS + PUNCTUATION).toCharArray(), 10);
+        return generate((LOWER + UPPER + DIGITS + PUNCTUATION).toCharArray(), 20);
     }
 
     private String generate(char[] chars, int length) {
@@ -29,7 +29,7 @@ public class LinkGenerator {
         for (int i = 0; i < length; i++) {
             link[i] = chars[random.nextInt(chars.length)];
         }
-        return "http://localhost:8080/registration/confirm?id=" + new String(link);
+        return new String(link);
     }
 
 }

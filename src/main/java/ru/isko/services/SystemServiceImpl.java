@@ -45,25 +45,23 @@ public class SystemServiceImpl implements SystemService {
     public void generateLink(Long userId) {
         Optional<User> existedUser = usersRepository.findById(userId);
 
-        User admin = usersRepository.findOne(1L);
-
         if (!existedUser.isPresent()) {
             throw new IllegalArgumentException("User not found");
         }
 
         User user = existedUser.get();
 
-        String link = linkGenerator.generate();
+        String link = "http://localhost:8080/registration/confirm/" + user.getHashLink();
 
         executorService.submit(() -> {
             emailService.sendMail("We are glad to see you in our The FIFA World Cup™ 2018 Russia." +
                             "Use the link below to confirm your account: <br><br><br>" +
-                            link + " <br><br><br> This is the automatic message, please, do not reply. <br>" +
+                            "<a href=\"" + link + "\">" + link + "</a> <br><br><br> This is the automatic message, please, do not reply. <br>" +
                             "If you do not know anything about this message, please, ignore it. <br>" +
                             "Technical support: <strong>iskand.valiev@yandex.ru</strong> <br>" +
                             "<b>Sincerely yours,</b> <br>" +
                             "<b>Iskander Valiev (general director of Iskander Developer Company)</b>",
-                    "Confirming link for mr. " + user.getLastname(),
+                    "Confirming link for " + user.getName() + user.getLastname(),
                             user.getEmail());
         });
 

@@ -6,14 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
-    <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 <div id="container">
     <div id="header">
         <div id="menu">
             <ul class="menu">
-                <li><a href="/worldcup/homepage.jsp">Homepage</a></li>
+                <li><a href="/user/homepage">Homepage</a></li>
                 <li><a href="/worldcup/matches.jsp">Matches</a>
                     <ul>
                         <li><a href="#">Group A</a></li>
@@ -57,7 +57,7 @@
     <hr>
     <div id="content">
         <div class="image">
-            <img src="http://localhost:8080/images/null.jpg" width="200" height="200" style="background-color: white;">
+            <img src="/images/null.jpg" width="200" height="200" style="background-color: white;">
             <a href=""></a>
         </div>
 
@@ -96,7 +96,7 @@
     </div>
 
     <div id="footer">
-        <img src="http://localhost:8080/images/sponsors.png" usemap="#mymap">
+        <img src="/images/sponsors.png" usemap="#mymap">
     </div>
 
     <map name="mymap">

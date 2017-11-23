@@ -44,8 +44,7 @@ public class RegistrationController {
     public String signUp(@Valid @ModelAttribute("userForm")UserRegistrationForm userRegistrationForm, BindingResult errors, RedirectAttributes attributes) {
         if (errors.hasErrors()) {
             attributes.addFlashAttribute("error",  errors.getAllErrors().get(0).getDefaultMessage());
-
-            System.out.println("error was occured");
+            System.out.println(errors.getAllErrors().get(0).toString());
             return "redirect:/";
         }
         User user = registrationService.register(userRegistrationForm);

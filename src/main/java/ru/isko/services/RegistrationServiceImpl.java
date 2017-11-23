@@ -8,6 +8,8 @@ import ru.isko.forms.UserRegistrationForm;
 import ru.isko.models.User;
 import ru.isko.repositories.users.UsersRepository;
 import ru.isko.security.role.Role;
+import ru.isko.security.state.State;
+import ru.isko.utils.LinkGenerator;
 
 import java.sql.Date;
 import java.text.ParseException;
@@ -25,6 +27,9 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Autowired
     private UsersRepository usersRepository;
+
+    @Autowired
+    private LinkGenerator linkGenerator;
 
     private final PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
@@ -51,7 +56,10 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .photo(userForm.getPhoto())
                 .telephone(userForm.getTelephone())
                 .role(Role.USER)
+                .state(State.NOT_CONFIRMED)
+                .hashLink(linkGenerator.generate())
                 .build();
+
         usersRepository.save(user);
         return user;
     }
