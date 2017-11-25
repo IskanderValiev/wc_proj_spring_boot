@@ -9,7 +9,6 @@ import lombok.*;
  * @author Iskander Valiev (Kazan Federal University Higher School of Information Technologies and Information Systems)
  * @version 1.0
  */
-
 @Data
 @NoArgsConstructor
 public class UserRegistrationForm {

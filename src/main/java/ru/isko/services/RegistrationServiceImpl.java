@@ -14,6 +14,8 @@ import ru.isko.utils.LinkGenerator;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 /**
  * 11/10/17
@@ -24,6 +26,9 @@ import java.text.SimpleDateFormat;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
+
+    @Autowired
+    private SmsService smsService;
 
     @Autowired
     private UsersRepository usersRepository;
@@ -59,8 +64,9 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .state(State.NOT_CONFIRMED)
                 .hashLink(linkGenerator.generate())
                 .build();
-
         usersRepository.save(user);
+        smsService.sendMessage(userForm);
+
         return user;
     }
 

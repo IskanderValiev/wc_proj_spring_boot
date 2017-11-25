@@ -6,6 +6,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import ru.isko.models.User;
+import ru.isko.security.state.State;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -56,7 +57,7 @@ public class UsersDetailsImpl implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return this.user.getState().equals(State.CONFIRMED);
     }
 
     public User getUser() {

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import ru.isko.models.User;
 import ru.isko.repositories.users.UsersRepository;
 import ru.isko.security.state.State;
+import ru.isko.services.VerifyService;
 
 import java.util.Optional;
 
@@ -21,20 +22,11 @@ import java.util.Optional;
 public class VerifyController {
 
     @Autowired
-    private UsersRepository usersRepository;
+    private VerifyService verifyService;
 
     @GetMapping("/registration/confirm/{user-link}")
     public String verify(@PathVariable("user-link") String link) {
-        Optional<User> user = usersRepository.findByHashLink(link);
-
-        if (!user.isPresent()) {
-            throw new IllegalArgumentException("Bad link");
-        }
-
-        User existedUser = user.get();
-        existedUser.setState(State.CONFIRMED);
-
-        usersRepository.save(existedUser);
+        verifyService.verifyUser(link);
         return "redirect:/";
     }
 }

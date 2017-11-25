@@ -143,7 +143,7 @@
                 <tr>
                     <td><input type="text" name="enterEmail" id="enterEmail"></td>
                     <td><input type="password" name="enterPassword" id="enterPassword"></td>
-                    <td><input type="checkbox" name="remember" checked>Remember me</td>
+                    <td><input type="checkbox" name="remember-me" checked>Remember me</td>
                     <td><input type="submit" name="signin" value="Sign In"></td>
                 </tr>
                 <tr>
@@ -192,7 +192,7 @@
 
                     <tr>
                         <td><label for="phone">Telephone<sup>•</sup></label></td>
-                        <td><input type="tel" id="phone" name="telephone"></td>
+                        <td><input type="tel" id="phone" name="telephone" placeholder="Required format: 71234567890"></td>
                     </tr>
                     <tr>
 

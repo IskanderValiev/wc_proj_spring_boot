@@ -37,11 +37,17 @@ public class UserRegistrationFormValidator implements Validator {
             errors.reject("existed.login", "User with such email already exists.");
         }
 
+        if (form.getTelephone().length() != 11) {
+            errors.reject("bad.number", "Invalid phone number.");
+        }
+
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "empty.email", "You have to fill email field.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty.password", "You have to fill password field.");
 //        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "confirmpassword", "empty.confirmpassword", "You have to fill confirming password field.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "empty.name", "You have to fill name field.");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "lastname", "empty.lastname", "You have to fill lastname field.");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "telephone", "empty.phone", "You have to fill phone number field.");
+
 
     }
 }
