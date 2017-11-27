@@ -70,29 +70,27 @@
                 <div class="comment">
                     <div class="user">
                         <div class="user-photo">
-                            <img src="">
+                            <img src="${comment.author.photo}" style="width: 128px; height: 128px">
                         </div>
                         <div class="user-name">
-                            <span>username</span>
-                            <span>comment date</span>
+                            ${comment.author.name} ${comment.author.lastname}
+                            ${comment.date}
                         </div>
                     </div>
                     <div class="commentText">
-                        <span>comment text</span>
+                        ${comment.content}
                     </div>
                 </div>
             </#list>
             <div class="post-comment">
-                <form action="" method="post">
-                    <input type="text" name="text" placeholder="Write comment here...">
-                    <input type="text" value="${model.comments.id}" style="height: 0; width: 0;">
+                <form action="/postcomment" method="post" class="post-comment-form">
+                    <textarea name="text" rows="15" placeholder="Write comment here..." style="width: 100%; resize: none; border-radius: 10px"></textarea>
+                    <input type="hidden" name="newsId" value="${model.news.id}">
                     <input type="submit" value="Send.">
                 </form>
             </div>
         </div>
     </div>
-
-
 </div>
 </body>
 </html>

@@ -13,7 +13,7 @@
     <div id="header">
         <div id="menu">
             <ul class="menu">
-                <li><a href="/user/homepage">Homepage</a></li>
+                <li><a href="/homepage">Homepage</a></li>
                 <li><a href="/worldcup/matches.jsp">Matches</a>
                     <ul>
                         <li><a href="#">Group A</a></li>
@@ -57,7 +57,7 @@
     <hr>
     <div id="content">
         <div class="image">
-            <img src="/images/null.jpg" width="200" height="200" style="background-color: white;">
+            <img src="${model.user.photo}" width="200" height="200" style="background-color: white;">
             <a href=""></a>
         </div>
 

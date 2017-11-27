@@ -45,7 +45,7 @@
         </div>
         <div id="profile-menu">
             <ul class="profile-menu">
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/">Profile</a></li>
                 <li><a href="/exit">Exit</a></li>
             </ul>
         </div>

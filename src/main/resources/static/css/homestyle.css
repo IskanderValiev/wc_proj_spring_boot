@@ -511,9 +511,45 @@ td, th {
     margin: auto;
 }
 
+/* ============== Comments ============== */
 
+.comments {
+    width: 80%;
+    margin: auto;
+}
 
+.comment {
+    width: 100%;
+    color: white;
+    font-size: 20px;
+    margin: 20px 0 20px 0;
+    background: rgba(204, 204, 153, 0.7);
+    height: 200px;
+}
 
+.user {
+    float: left;
+    width: 20%;
+    height: 100%;
+    margin: 10px 10px 10px 10px;
+}
+
+.commentText {
+    float: left;
+    width: 70%;
+    height: 100%;
+    margin: 10px 10px 10px 10px;
+}
+
+.post-comment {
+    margin: 0 0 20px 0;
+}
+
+.post-comment input[type=text] {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+}
 
 /*Адаптивность картинок и видео*/
 img{

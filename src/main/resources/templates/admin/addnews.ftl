@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
-    <title>News</title>
-    <link rel="stylesheet" href="/worldcup/homepage/style.css">
+    <title>Add news</title>
+    <link rel="stylesheet" href="/css/homestyle.css">
 </head>
 <body>
 <div class="main">
@@ -51,52 +51,19 @@
         </div>
     </div>
     <hr>
-    <div class="news">
-        <div class="type">
-            <h3>News</h3>
-        <#list model.news as news>
-            <#if news.type = "Blog">
-                <div class="newsBlock">
-                    <img src="${news.image}">
-                    <div class="news_text">
-                        <div class="news_header">${news.header}</div>
-                    </div>
-                </div>
-            </#if>
-        </#list>
-        </div>
-
-
-        <div class="type">
-            <h3>Articles</h3>
-        <#list model.articles as article>
-            <#if article.type = "Blog">
-                <div class="newsBlock">
-                    <img src="${article.image}">
-                    <div class="news_text">
-                        <div class="news_header">${article.header}</div>
-                    </div>
-                </div>
-            </#if>
-        </#list>
-        </div>
-
-        <div class="type">
-            <h3>Blog</h3>
-        <#list model.blogs as blog>
-            <#if blog.type = "Blog">
-                <div class="newsBlock">
-                    <img src="${blog.image}">
-                    <div class="news_text">
-                        <div class="news_header">${blog.header}</div>
-                    </div>
-                </div>
-            </#if>
-        </#list>
-        </div>
-    </div>
-    <div class="addnews">
-        <a href="/admin/addnews">Add News</a>
+    <div class="newnews">
+        <form action="/admin/postnews" method="post">
+            <input type="text" name="header" placeholder="news header">
+            <textarea name="content" rows="20"></textarea>
+            <input type="text" name="image" placeholder="image path">
+            <select name="type">
+                <option disabled>Choose news type</option>
+                <option name="type" value="News">News</option>
+                <option name="type" value="Article">Article</option>
+                <option name="type" value="Blog">Blog</option>
+            </select>
+            <input type="submit" value="Add news">
+        </form>
     </div>
 </div>
 </body>

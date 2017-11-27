@@ -169,7 +169,7 @@
 
     <div class="information">
         <div class="block1">
-            <a href="/user/news">
+            <a href="/news">
                 <img src="homepage/images/news.jpg" alt="news" class="info_img">
                 <div class="info_text">
                     <h3 class="info_header">News 1</h3>
@@ -221,7 +221,7 @@
 </div>
 <!-- Конец кода -->
 <!-- Подключаем скрипты -->
-<script src = "<c:url value="http://yastatic.net/jquery/2.1.3/jquery.min.js"/>"></script>
+<script src = "http://yastatic.net/jquery/2.1.3/jquery.min.js"></script>
 <script src="homepage/slick/slick.min.js"></script>
 <script src="homepage/js/js.js"></script>
 </body>

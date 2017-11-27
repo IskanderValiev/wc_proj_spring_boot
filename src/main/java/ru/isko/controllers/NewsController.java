@@ -1,6 +1,7 @@
 package ru.isko.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +9,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.isko.forms.NewsForm;
+import ru.isko.models.News;
+import ru.isko.repositories.comments.CommentsRepository;
 import ru.isko.repositories.news.NewsRepository;
+import ru.isko.security.role.Role;
+import ru.isko.services.AuthenticationService;
 import ru.isko.services.NewsService;
 
 /**
@@ -22,34 +27,44 @@ import ru.isko.services.NewsService;
 public class NewsController {
 
     @Autowired
+    private AuthenticationService authenticationService;
+
+    @Autowired
     private NewsRepository newsRepository;
 
     @Autowired
     private NewsService newsService;
 
+    @Autowired
+    private CommentsRepository commentsRepository;
 
-    @GetMapping("/user/news")
-    public String news(@ModelAttribute("model")ModelMap model) {
-        model.addAttribute("news", newsRepository.findByType("News"));
-        model.addAttribute("articles", newsRepository.findByType("Article"));
-        model.addAttribute("blogs", newsRepository.findByType("Blog"));
-        return "news";
+
+    @GetMapping("/news")
+    public String news(@ModelAttribute("model")ModelMap model, Authentication authentication) {
+        if (authenticationService.getUser(authentication).getRole().equals(Role.USER)) {
+            return "redirect:/user/news";
+        } else if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
+            return "redirect:/admin/news";
+        }
+        return "redirect:/signin";
     }
 
     @GetMapping("/admin/addnews")
     public String addnews() {
-        return "addnews";
+        return "admin/addnews";
     }
 
     @PostMapping("/admin/postnews")
     public String postNews(@ModelAttribute("newsForm") NewsForm newsForm) {
         newsService.addNews(newsForm);
-        return "addnews";
+        return "redirect:/admin/news";
     }
 
     @GetMapping("/user/news/{news-id}")
     public String openNewsPage(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId) {
+        News news = newsRepository.findOne(newsId);
         model.addAttribute("news", newsRepository.findOne(newsId));
+        model.addAttribute("comments", commentsRepository.findAllByNews(news));
         return "selected_news";
     }
 }

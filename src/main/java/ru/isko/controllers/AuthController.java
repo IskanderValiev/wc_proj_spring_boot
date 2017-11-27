@@ -66,7 +66,7 @@ public class AuthController {
             if (user.getRole().equals(Role.USER)) {
                 return "redirect:/user/profile";
             } else if (user.getRole().equals(Role.ADMIN)) {
-                return "redirect:/admin/users";
+                return "redirect:/admin/profile";
             }
         }
         return "redirect:/signin";

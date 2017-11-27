@@ -28,7 +28,6 @@ public class NewsServiceImpl implements NewsService {
                 .image(newsForm.getImage())
                 .type(newsForm.getType())
                 .build();
-
         newsRepository.save(news);
     }
 }

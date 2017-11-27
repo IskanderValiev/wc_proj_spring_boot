@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import ru.isko.forms.CommentsForm;
 import ru.isko.models.Comment;
 import ru.isko.repositories.comments.CommentsRepository;
+import ru.isko.repositories.news.NewsRepository;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -26,14 +27,16 @@ public class CommentServiceImpl implements CommentService {
     @Autowired
     private AuthenticationService authenticationService;
 
-    private Authentication authentication;
+    @Autowired
+    private NewsRepository newsRepository;
 
     @Override
-    public void addComment(CommentsForm commentsForm) {
+    public void addComment(CommentsForm commentsForm, Authentication authentication) {
         Comment comment = Comment.builder()
                 .content(commentsForm.getText())
                 .date(new Timestamp(System.currentTimeMillis()))
                 .author(authenticationService.getUser(authentication))
+                .news(newsRepository.findOne(commentsForm.getNewsId()))
                 .build();
         commentsRepository.save(comment);
     }

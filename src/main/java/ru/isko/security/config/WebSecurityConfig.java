@@ -37,6 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/user/**").hasAuthority("USER")
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("http://yastatic.net/jquery/2.1.3/**").permitAll()
                 .antMatchers("/confirm/**").permitAll()
                 .antMatchers("/registration/confirm/**").permitAll()
                 .antMatchers("/tempPassword").permitAll()

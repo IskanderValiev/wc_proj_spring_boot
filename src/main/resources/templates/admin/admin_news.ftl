@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Add news</title>
+    <title>News</title>
     <link rel="stylesheet" href="/css/homestyle.css">
 </head>
 <body>
@@ -51,19 +51,48 @@
         </div>
     </div>
     <hr>
-    <div class="newnews">
-        <form action="/admin/postnews" method="post">
-            <input type="text" name="header" placeholder="news header">
-            <textarea name="text" rows="20"></textarea>
-            <input type="text" name="imagePath" placeholder="image path">
-            <select name="type">
-                <option disabled>Choose news type</option>
-                <option name="type" value="News">News</option>
-                <option name="type" value="Article">Article</option>
-                <option name="type" value="Blog">Blog</option>
-            </select>
-            <input type="submit" value="Add news">
-        </form>
+    <div class="news">
+        <div class="type">
+            <h3>News</h3>
+        <#list model.news as news>
+            <div class="newsBlock">
+                <a href="/user/news/${news.id}">
+                    <img src="${news.image}">
+                    <div class="news_text">
+                        <div class="news_header">${news.header}</div>
+                    </div>
+                </a>
+            </div>
+        </#list>
+        </div>
+
+
+        <div class="type">
+            <h3>Articles</h3>
+        <#list model.articles as article>
+            <div class="newsBlock">
+                <img src="${article.image}">
+                <div class="news_text">
+                    <div class="news_header">${article.header}</div>
+                </div>
+            </div>
+        </#list>
+        </div>
+
+        <div class="type">
+            <h3>Blog</h3>
+        <#list model.blogs as blog>
+            <div class="newsBlock">
+                <img src="${blog.image}">
+                <div class="news_text">
+                    <div class="news_header">${blog.header}</div>
+                </div>
+            </div>
+        </#list>
+        </div>
+    </div>
+    <div class="addnews">
+        <a href="/admin/addnews">Add News</a>
     </div>
 </div>
 </body>
