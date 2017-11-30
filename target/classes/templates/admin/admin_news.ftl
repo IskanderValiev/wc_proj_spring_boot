@@ -56,7 +56,7 @@
             <h3>News</h3>
         <#list model.news as news>
             <div class="newsBlock">
-                <a href="/user/news/${news.id}">
+                <a href="/admin/news/${news.id}">
                     <img src="${news.image}">
                     <div class="news_text">
                         <div class="news_header">${news.header}</div>
@@ -71,10 +71,12 @@
             <h3>Articles</h3>
         <#list model.articles as article>
             <div class="newsBlock">
-                <img src="${article.image}">
-                <div class="news_text">
-                    <div class="news_header">${article.header}</div>
-                </div>
+                <a href="/user/news/${article.id}">
+                    <img src="${article.image}">
+                    <div class="news_text">
+                        <div class="news_header">${article.header}</div>
+                    </div>
+                </a>
             </div>
         </#list>
         </div>
@@ -83,10 +85,12 @@
             <h3>Blog</h3>
         <#list model.blogs as blog>
             <div class="newsBlock">
-                <img src="${blog.image}">
-                <div class="news_text">
-                    <div class="news_header">${blog.header}</div>
-                </div>
+                <a href="/user/news/${blog.id}">
+                    <img src="${blog.image}">
+                    <div class="news_text">
+                        <div class="news_header">${blog.header}</div>
+                    </div>
+                </a>
             </div>
         </#list>
         </div>

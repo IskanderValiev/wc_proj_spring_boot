@@ -1,8 +1,10 @@
-<!DOCTYPE html>
+<#ftl encoding='UTF-8'>
+<!doctype html>
 <html>
 <head>
     <title>News</title>
     <link rel="stylesheet" href="/css/homestyle.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="main">
@@ -45,53 +47,54 @@
         </div>
         <div id="profile-menu">
             <ul class="profile-menu">
-                <li><a href="/">Profile</a></li>
+                <li><a href="/profile">Profile</a></li>
                 <li><a href="/exit">Exit</a></li>
             </ul>
         </div>
     </div>
     <hr>
-    <div class="news">
-        <div class="type">
-            <h3>News</h3>
-            <#list model.news as news>
-                <div class="newsBlock">
-                    <a href="/user/news/${news.id}">
-                    <img src="${news.image}">
-                    <div class="news_text">
-                        <div class="news_header">${news.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
-        </div>
+    <div class="newsImage">
+        <img src="${model.news.image}">
+    </div>
+    <div class="content">
+        <div class="selected-news">
 
-        <div class="type">
-            <h3>Articles</h3>
-            <#list model.articles as article>
-                <div class="newsBlock">
-                    <a href="/user/news/${article.id}">
-                    <img src="${article.image}">
-                    <div class="news_text">
-                        <div class="news_header">${article.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
+            <div class="newsHeader">
+                <span>${model.news.header}</span>
+            </div>
+            <div class="newsContent">
+                <span>${model.news.content}</span>
+            </div>
         </div>
-
-        <div class="type">
-            <h3>Blog</h3>
-            <#list model.blogs as blog>
-                <div class="newsBlock">
-                    <a href="/user/news/${blog.id}">
-                    <img src="${blog.image}">
-                    <div class="news_text">
-                        <div class="news_header">${blog.header}</div>
+        <div class="comments">
+        <#list model.comments as comment>
+            <div class="comment">
+                <div class="user">
+                    <div class="user-photo">
+                        <img src="${comment.author.photo}" style="width: 128px; height: 128px">
                     </div>
-                    </a>
+                    <div class="user-name">
+                    ${comment.author.name} ${comment.author.lastname}
+                            ${comment.date}
+                    </div>
                 </div>
-            </#list>
+                <div class="commentText">
+                ${comment.content}
+                </div>
+                <div class="delete-comment">
+                    <form method="get" action="/admin/delete/${comment.id}">
+                        <input type="image" src="/images/delete-32.png" value="${comment.id}">
+                    </form>
+                </div>
+            </div>
+        </#list>
+            <div class="post-comment">
+                <form action="/postcomment" method="post" class="post-comment-form">
+                    <textarea name="text" rows="15" placeholder="Write comment here..." style="width: 100%; resize: none; border-radius: 10px"></textarea>
+                    <input type="hidden" name="newsId" value="${model.news.id}">
+                    <input type="submit" value="Send.">
+                </form>
+            </div>
         </div>
     </div>
 </div>

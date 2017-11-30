@@ -58,4 +58,9 @@ public class AdminController {
     public String openHomepag() {
         return "homepage";
     }
+
+    @GetMapping("/contacts")
+    public String openContacts() {
+        return "contacts";
+    }
 }

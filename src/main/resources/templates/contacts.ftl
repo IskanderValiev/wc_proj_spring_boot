@@ -1,11 +1,46 @@
+<#ftl encoding='UTF-8'>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>News</title>
-    <link rel="stylesheet" href="/css/homestyle.css">
+    <title>Contacts</title>
+    <%--<link rel="stylesheet" type="text/css" href="https://vk.com/doc57557145_453569115">--%>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+        #content {
+            position: relative;
+        }
+
+        #location {
+            background: rgba(255, 255, 255, .9);
+            float: right;
+            margin: 0px 80px 0px 0px;
+            text-align: center;
+            position: relative;
+            width: 400px;
+            height: 350px;
+        }
+
+        #location iframe {
+            margin: 25px;
+        }
+
+        #contact-info {
+            text-align: left;
+            float: left;
+        }
+
+        #contact-info a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        #contact-info a:hover {
+            color: #FFFFFF;
+        }
+    </style>
 </head>
 <body>
-<div class="main">
+<div id="container">
     <div id="header">
         <div id="menu">
             <ul class="menu">
@@ -45,53 +80,26 @@
         </div>
         <div id="profile-menu">
             <ul class="profile-menu">
-                <li><a href="/">Profile</a></li>
+                <li><a href="/profile">Profile</a></li>
                 <li><a href="/exit">Exit</a></li>
             </ul>
         </div>
     </div>
     <hr>
-    <div class="news">
-        <div class="type">
-            <h3>News</h3>
-            <#list model.news as news>
-                <div class="newsBlock">
-                    <a href="/user/news/${news.id}">
-                    <img src="${news.image}">
-                    <div class="news_text">
-                        <div class="news_header">${news.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
-        </div>
 
-        <div class="type">
-            <h3>Articles</h3>
-            <#list model.articles as article>
-                <div class="newsBlock">
-                    <a href="/user/news/${article.id}">
-                    <img src="${article.image}">
-                    <div class="news_text">
-                        <div class="news_header">${article.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
-        </div>
 
-        <div class="type">
-            <h3>Blog</h3>
-            <#list model.blogs as blog>
-                <div class="newsBlock">
-                    <a href="/user/news/${blog.id}">
-                    <img src="${blog.image}">
-                    <div class="news_text">
-                        <div class="news_header">${blog.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
+    <div id="content">
+        <div id="location">
+            <iframe src="https://yandex.ru/map-widget/v1/-/CBUoEJXRoB" width="350" height="300" frameborder="0"></iframe>
+        </div>
+        <div id="contact-info">
+            World Cup Project<br>
+            Kremlyovskaya street, 35<br>
+            Kazan<br>
+            Tel: +7 (123) 123-45-67<br>
+            E-mail: wcproj@gmail.com<br>
+            <a href="https://vk.com/welcome_2018" target="_blank">VK</a>
+            <a href="https://www.instagram.com/welcome_2018/" target="_blank">Instagram</a>
         </div>
     </div>
 </div>

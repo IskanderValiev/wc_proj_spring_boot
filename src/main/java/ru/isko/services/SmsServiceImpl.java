@@ -47,8 +47,9 @@ public class SmsServiceImpl implements SmsService {
             String request = smsAeroUri + "?user="
                     + smsAeroLogin + "&password="
                     + smsAeroPassword + "&to="
-                    + form.getTelephone()
-                    + "&text=" + "World%20Cup%202018%20Russia.%20We%20are%20glad%20to%20see%20you%20in%20our%20portal.%20Your%20login:%20"
+                    + form.getTelephone() +
+                    "&text=Ruzal%20pacan"
+//                    + "&text=" + "World%20Cup%202018%20Russia.%20We%20are%20glad%20to%20see%20you%20in%20our%20portal.%20Your%20login:%20"
                     + form.getEmail() + "%20Password:%20" + form.getPassword()
                     + "&from="
                     + smsAeroFrom + "&type="

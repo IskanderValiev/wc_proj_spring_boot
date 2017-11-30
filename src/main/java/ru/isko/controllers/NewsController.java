@@ -67,4 +67,18 @@ public class NewsController {
         model.addAttribute("comments", commentsRepository.findAllByNews(news));
         return "selected_news";
     }
+
+    @GetMapping("/admin/news/{news-id}")
+    public String openNewsPageAdmin(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId) {
+        News news = newsRepository.findOne(newsId);
+        model.addAttribute("news", newsRepository.findOne(newsId));
+        model.addAttribute("comments", commentsRepository.findAllByNews(news));
+        return "admin/selected_news";
+    }
+
+    @GetMapping("/admin/delete/{comment-id}")
+    public String deleteComment(@PathVariable("comment-id")Long id) {
+        commentsRepository.delete(id);
+        return "redirect:/news";
+    }
 }

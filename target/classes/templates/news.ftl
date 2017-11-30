@@ -45,7 +45,7 @@
         </div>
         <div id="profile-menu">
             <ul class="profile-menu">
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/">Profile</a></li>
                 <li><a href="/exit">Exit</a></li>
             </ul>
         </div>
@@ -71,10 +71,12 @@
             <h3>Articles</h3>
             <#list model.articles as article>
                 <div class="newsBlock">
+                    <a href="/user/news/${article.id}">
                     <img src="${article.image}">
                     <div class="news_text">
                         <div class="news_header">${article.header}</div>
                     </div>
+                    </a>
                 </div>
             </#list>
         </div>
@@ -83,10 +85,12 @@
             <h3>Blog</h3>
             <#list model.blogs as blog>
                 <div class="newsBlock">
+                    <a href="/user/news/${blog.id}">
                     <img src="${blog.image}">
                     <div class="news_text">
                         <div class="news_header">${blog.header}</div>
                     </div>
+                    </a>
                 </div>
             </#list>
         </div>

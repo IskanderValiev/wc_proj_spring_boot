@@ -10,4 +10,5 @@ public interface CommentService {
 
     void addComment(CommentsForm commentsForm, Authentication authentication);
     List<Comment> getAll();
+    void deleteComment(Long id);
 }

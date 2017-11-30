@@ -34,4 +34,9 @@ public class UserController {
         model.addAttribute("blogs", newsRepository.findByType("Blog"));
         return "news";
     }
+
+    @GetMapping("/contacts")
+    public String openContacts() {
+        return "contacts";
+    }
 }

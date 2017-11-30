@@ -106,18 +106,18 @@
                 <li><a href="#">Stadiums</a></li>
                 <li><a href="/teams">Teams</a></li>
                 <li><a href="/worldcup/galary.jsp">Galary</a></li>
-                <li><a href="/worldcup/contact.jsp">Contacts</a></li>
+                <li><a href="contacts.ftl">Contacts</a></li>
             </ul>
         </div>
-        <div class="search">
-            <form action="" method="get">
-                <input type="text" name="search" placeholder="What are you searching for?">
-                <input type="submit">
-            </form>
-        </div>
+        <#--<div class="search">-->
+            <#--<form action="" method="get">-->
+                <#--<input type="text" name="search" placeholder="What are you searching for?">-->
+                <#--<input type="submit">-->
+            <#--</form>-->
+        <#--</div>-->
         <div id="profile-menu">
             <ul class="profile-menu">
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/">Profile</a></li>
                 <li><a href="/exit">Exit</a></li>
             </ul>
         </div>

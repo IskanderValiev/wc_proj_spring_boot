@@ -29,4 +29,14 @@ public class RedirectController {
         }
         return "redirect:/signin";
     }
+
+    @GetMapping("/contacts")
+    public String getContactsPage(Authentication authentication) {
+        if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
+            return "redirect:/admin/contacts";
+        } else if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
+            return "redirect:/user/contacts";
+        }
+        return "redirect:/singin";
+    }
 }
