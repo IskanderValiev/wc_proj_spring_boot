@@ -14,7 +14,9 @@ import ru.isko.repositories.comments.CommentsRepository;
 import ru.isko.repositories.news.NewsRepository;
 import ru.isko.security.role.Role;
 import ru.isko.services.AuthenticationService;
+import ru.isko.services.CommentService;
 import ru.isko.services.NewsService;
+import ru.isko.utils.Response;
 
 /**
  * created by Iskander Valiev
@@ -38,6 +40,8 @@ public class NewsController {
     @Autowired
     private CommentsRepository commentsRepository;
 
+    @Autowired
+    private CommentService commentService;
 
     @GetMapping("/news")
     public String news(@ModelAttribute("model")ModelMap model, Authentication authentication) {
@@ -64,7 +68,7 @@ public class NewsController {
     public String openNewsPage(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId) {
         News news = newsRepository.findOne(newsId);
         model.addAttribute("news", newsRepository.findOne(newsId));
-        model.addAttribute("comments", commentsRepository.findAllByNews(news));
+        model.addAttribute("comments", commentService.sortComment(commentsRepository.findAllByNews(news)));
         return "selected_news";
     }
 
@@ -72,7 +76,7 @@ public class NewsController {
     public String openNewsPageAdmin(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId) {
         News news = newsRepository.findOne(newsId);
         model.addAttribute("news", newsRepository.findOne(newsId));
-        model.addAttribute("comments", commentsRepository.findAllByNews(news));
+        model.addAttribute("comments", commentService.sortComment(commentsRepository.findAllByNews(news)));
         return "admin/selected_news";
     }
 

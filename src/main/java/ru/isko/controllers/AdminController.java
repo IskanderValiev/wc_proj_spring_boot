@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.isko.repositories.news.NewsRepository;
 import ru.isko.services.AdminService;
 import ru.isko.services.AuthenticationService;
+import ru.isko.services.NewsService;
 
 /**
  * created by Iskander Vaiev
@@ -33,6 +34,9 @@ public class AdminController {
     @Autowired
     private NewsRepository newsRepository;
 
+    @Autowired
+    private NewsService newsService;
+
 
     @GetMapping("/profile")
     public String getAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
@@ -48,9 +52,9 @@ public class AdminController {
 
     @GetMapping("/news")
     public String openNews(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("news", newsRepository.findByType("News"));
-        model.addAttribute("articles", newsRepository.findByType("Article"));
-        model.addAttribute("blogs", newsRepository.findByType("Blog"));
+        model.addAttribute("news", newsService.sortNews(newsRepository.findByType("News")));
+        model.addAttribute("articles", newsService.sortNews(newsRepository.findByType("Article")));
+        model.addAttribute("blogs", newsService.sortNews(newsRepository.findByType("Blog")));
         return "admin/admin_news";
     }
 

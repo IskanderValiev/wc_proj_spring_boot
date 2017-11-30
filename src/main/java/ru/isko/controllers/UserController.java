@@ -6,7 +6,11 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ru.isko.models.News;
 import ru.isko.repositories.news.NewsRepository;
+import ru.isko.services.NewsService;
+
+import java.util.List;
 
 /**
  * created by Iskander Valiev
@@ -22,6 +26,9 @@ public class UserController {
     @Autowired
     private NewsRepository newsRepository;
 
+    @Autowired
+    private NewsService newsService;
+
     @GetMapping("/homepage")
     public String openHomepage() {
         return "homepage";
@@ -29,9 +36,9 @@ public class UserController {
 
     @GetMapping("/news")
     public String openNews(@ModelAttribute("model")ModelMap model) {
-        model.addAttribute("news", newsRepository.findByType("News"));
-        model.addAttribute("articles", newsRepository.findByType("Article"));
-        model.addAttribute("blogs", newsRepository.findByType("Blog"));
+        model.addAttribute("news", newsService.sortNews(newsRepository.findByType("News")));
+        model.addAttribute("articles", newsService.sortNews(newsRepository.findByType("Article")));
+        model.addAttribute("blogs", newsService.sortNews(newsRepository.findByType("Blog")));
         return "news";
     }
 

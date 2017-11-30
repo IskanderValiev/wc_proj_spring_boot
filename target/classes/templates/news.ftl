@@ -66,7 +66,6 @@
             </#list>
         </div>
 
-
         <div class="type">
             <h3>Articles</h3>
             <#list model.articles as article>

@@ -2,9 +2,12 @@ package ru.isko.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.isko.comparators.NewsDateComparator;
 import ru.isko.forms.NewsForm;
 import ru.isko.models.News;
 import ru.isko.repositories.news.NewsRepository;
+
+import java.util.List;
 
 /**
  * created by Iskander Valiev
@@ -29,5 +32,11 @@ public class NewsServiceImpl implements NewsService {
                 .type(newsForm.getType())
                 .build();
         newsRepository.save(news);
+    }
+
+    @Override
+    public List<News> sortNews(List<News> news) {
+        news.sort(new NewsDateComparator());
+        return news;
     }
 }

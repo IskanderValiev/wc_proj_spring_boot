@@ -3,6 +3,8 @@ package ru.isko.services;
 import ru.isko.forms.NewsForm;
 import ru.isko.models.News;
 
+import java.util.List;
+
 /**
  * created by Iskander Valiev
  * on 11/23/17
@@ -13,5 +15,5 @@ import ru.isko.models.News;
 public interface NewsService {
 
     void addNews(NewsForm newsForm);
-
+    List<News> sortNews(List<News> news);
 }

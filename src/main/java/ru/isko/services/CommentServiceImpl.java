@@ -3,6 +3,7 @@ package ru.isko.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import ru.isko.comparators.CommentsDateComparator;
 import ru.isko.forms.CommentsForm;
 import ru.isko.models.Comment;
 import ru.isko.repositories.comments.CommentsRepository;
@@ -49,5 +50,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public void deleteComment(Long id) {
         commentsRepository.delete(id);
+    }
+
+    @Override
+    public List<Comment> sortComment(List<Comment> comments) {
+        comments.sort(new CommentsDateComparator());
+        return comments;
     }
 }
