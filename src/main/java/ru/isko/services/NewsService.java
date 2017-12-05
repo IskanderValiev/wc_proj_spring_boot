@@ -16,4 +16,5 @@ public interface NewsService {
 
     void addNews(NewsForm newsForm);
     List<News> sortNews(List<News> news);
+//    List<News> getLastNews();
 }

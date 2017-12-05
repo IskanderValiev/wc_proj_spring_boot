@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CommentService {
 
-    void addComment(CommentsForm commentsForm, Authentication authentication);
+    Comment addComment(CommentsForm commentsForm, Authentication authentication);
     List<Comment> getAll();
     void deleteComment(Long id);
     List<Comment> sortComment(List<Comment> comments);

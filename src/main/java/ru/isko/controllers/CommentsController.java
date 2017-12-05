@@ -6,12 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import ru.isko.forms.CommentsForm;
-import ru.isko.models.Comment;
-import ru.isko.repositories.comments.CommentsRepository;
 import ru.isko.services.CommentService;
-import ru.isko.utils.Response;
 
 /**
  * created by Iskander Valiev

@@ -1,7 +1,6 @@
 package ru.isko.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import ru.isko.forms.UserRegistrationForm;
 import ru.isko.models.User;
-import ru.isko.services.AdminService;
 import ru.isko.services.RegistrationService;
 import ru.isko.services.SystemService;
 import ru.isko.validators.UserRegistrationFormValidator;
@@ -54,7 +52,7 @@ public class RegistrationController {
 
     @GetMapping(value = "/confirm/{user-id}")
     public String sendLink(@ModelAttribute("model")ModelMap model, @PathVariable("user-id") Long userId) {
-        service.generateLink(userId);
+        service.sendLink(userId);
         return "confirm";
     }
 }

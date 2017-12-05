@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Restoring password</title>
-    <link rel="stylesheet" href="http://localhost:8080/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style type="text/css">
         hr {
             width: 100%;

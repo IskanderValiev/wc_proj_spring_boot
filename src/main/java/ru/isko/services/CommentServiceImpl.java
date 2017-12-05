@@ -32,14 +32,15 @@ public class CommentServiceImpl implements CommentService {
     private NewsRepository newsRepository;
 
     @Override
-    public void addComment(CommentsForm commentsForm, Authentication authentication) {
+    public Comment addComment(CommentsForm commentsForm, Authentication authentication) {
         Comment comment = Comment.builder()
-                .content(commentsForm.getText())
+                .content(commentsForm.getContent())
                 .date(new Timestamp(System.currentTimeMillis()))
                 .author(authenticationService.getUser(authentication))
                 .news(newsRepository.findOne(commentsForm.getNewsId()))
                 .build();
         commentsRepository.save(comment);
+        return comment;
     }
 
     @Override

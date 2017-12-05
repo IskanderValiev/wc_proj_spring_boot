@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.isko.forms.NewsForm;
 import ru.isko.models.News;
 import ru.isko.repositories.comments.CommentsRepository;
@@ -43,14 +40,13 @@ public class NewsController {
     @Autowired
     private CommentService commentService;
 
-    @GetMapping("/news")
+    @GetMapping("/user/news")
     public String news(@ModelAttribute("model")ModelMap model, Authentication authentication) {
-        if (authenticationService.getUser(authentication).getRole().equals(Role.USER)) {
-            return "redirect:/user/news";
-        } else if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
-            return "redirect:/admin/news";
-        }
-        return "redirect:/signin";
+        model.addAttribute("user",authenticationService.getUser(authentication));
+        model.addAttribute("news", newsService.sortNews(newsRepository.findByType("News")));
+        model.addAttribute("articles", newsService.sortNews(newsRepository.findByType("Article")));
+        model.addAttribute("blogs", newsService.sortNews(newsRepository.findByType("Blog")));
+        return "news";
     }
 
     @GetMapping("/admin/addnews")
@@ -65,24 +61,19 @@ public class NewsController {
     }
 
     @GetMapping("/user/news/{news-id}")
-    public String openNewsPage(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId) {
+    public String openNewsPage(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId, Authentication authentication) {
         News news = newsRepository.findOne(newsId);
         model.addAttribute("news", newsRepository.findOne(newsId));
         model.addAttribute("comments", commentService.sortComment(commentsRepository.findAllByNews(news)));
+        model.addAttribute("user", authenticationService.getUser(authentication));
         return "selected_news";
-    }
-
-    @GetMapping("/admin/news/{news-id}")
-    public String openNewsPageAdmin(@ModelAttribute("model") ModelMap model, @PathVariable("news-id") Long newsId) {
-        News news = newsRepository.findOne(newsId);
-        model.addAttribute("news", newsRepository.findOne(newsId));
-        model.addAttribute("comments", commentService.sortComment(commentsRepository.findAllByNews(news)));
-        return "admin/selected_news";
     }
 
     @GetMapping("/admin/delete/{comment-id}")
     public String deleteComment(@PathVariable("comment-id")Long id) {
+        Long newsID = commentsRepository.findOne(id).getNews().getId();
         commentsRepository.delete(id);
-        return "redirect:/news";
+        return "redirect:/user/news/"+newsID;
     }
+
 }

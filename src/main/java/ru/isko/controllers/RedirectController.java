@@ -4,8 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import ru.isko.forms.EditProfileForm;
 import ru.isko.security.role.Role;
 import ru.isko.services.AuthenticationService;
+import ru.isko.services.UserService;
 
 /**
  * created by Iskander Valiev
@@ -20,23 +23,14 @@ public class RedirectController {
     @Autowired
     private AuthenticationService authenticationService;
 
-    @GetMapping("/homepage")
-    public String getHomepage(Authentication authentication) {
-        if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
-            return "redirect:/admin/homepage";
-        } else if (authenticationService.getUser(authentication).getRole().equals(Role.USER)) {
-            return "redirect:/user/homepage";
-        }
-        return "redirect:/signin";
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/editprofile")
+    public String edit(EditProfileForm editProfileForm, Authentication authentication) {
+        userService.update(authenticationService.getUser(authentication), editProfileForm);
+        return "redirect:/editprofile";
     }
 
-    @GetMapping("/contacts")
-    public String getContactsPage(Authentication authentication) {
-        if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
-            return "redirect:/admin/contacts";
-        } else if (authenticationService.getUser(authentication).getRole().equals(Role.ADMIN)) {
-            return "redirect:/user/contacts";
-        }
-        return "redirect:/singin";
-    }
+
 }

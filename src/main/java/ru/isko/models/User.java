@@ -12,7 +12,6 @@ import java.util.List;
  * Created by isko on 9/24/17.
  */
 
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
@@ -50,8 +49,9 @@ public class User {
     @Column(name = "telephone")
     private String telephone;
 
-    @Column(name = "photo")
-    private String photo;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "photo")
+    private FileInfo photo;
 
     @Column(name = "role")
     @Enumerated(EnumType.STRING)
@@ -65,6 +65,8 @@ public class User {
 
     @Column(name = "link")
     private String hashLink;
+
+    private String resetPasswordLink;
 
 //    @OneToMany(mappedBy = "author")
 //    private List<Comment> comments;

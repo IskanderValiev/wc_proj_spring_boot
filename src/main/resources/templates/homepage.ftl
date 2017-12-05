@@ -126,6 +126,14 @@
     <hr>
 
     <div class="sl">
+        <#--<#list model.lastnews as lastnews>-->
+            <#--<div class="sl_slide"><a href="/user/news/${lastnews.id}"><img src="${lastnews.image}" alt="slide 1" class="sl_img">-->
+                <#--<div class="sl_text">-->
+                    <#--<h3 class="sl_header">${lastnews.header}</h3>-->
+                    <#--&lt;#&ndash;<p class="sl_desc">Spain secure qualification to next year’s World Cup.</p>&ndash;&gt;-->
+                <#--</div>-->
+            <#--</a></div>-->
+        <#--</#list>-->
         <div class="sl_slide"><a href="#"><img src="homepage/images/spain.jpg" alt="slide 1" class="sl_img">
             <div class="sl_text">
                 <h3 class="sl_header">Spain secure Russia 2018 berth.</h3>
@@ -156,20 +164,12 @@
                 <p class="sl_desc">The latest European qualifiers ended without any fresh names added to the list of 2018 FIFA World Cup Russia™ participants.</p>
             </div>
         </a></div>
-        <#--<%--<c:forEach items="${lastnews}" var="${news}">--%>-->
-        <#--<%--<div class="sl_slide"><a href="#"><img src="${news.image}" alt="slide 5" class="sl_img">--%>-->
-            <#--<%--<div class="sl_text">--%>-->
-                <#--<%--<h3 class="sl_header">${news.header}</h3>--%>-->
-                <#--<%--<p class="sl_desc">The latest European qualifiers ended without any fresh names added to the list of 2018 FIFA World Cup Russia™ participants.</p>--%>-->
-                <#--<%--</div>--%>-->
-            <#--<%--</a></div>--%>-->
-        <#--<%--</c:forEach>--%>-->
-        <!--TODO complete slides creating-->
+
     </div>
 
     <div class="information">
         <div class="block1">
-            <a href="/news">
+            <a href="/user/news">
                 <img src="homepage/images/news.jpg" alt="news" class="info_img">
                 <div class="info_text">
                     <h3 class="info_header">News 1</h3>

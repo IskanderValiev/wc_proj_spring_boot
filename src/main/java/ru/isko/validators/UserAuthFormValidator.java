@@ -19,9 +19,6 @@ import ru.isko.repositories.users.UsersRepository;
 @Component
 public class UserAuthFormValidator implements Validator {
 
-    @Autowired
-    private UsersRepository usersRepository;
-
     @Override
     public boolean supports(Class<?> aClass) {
         return aClass.getName().equals(UserAuthForm.class.getName());

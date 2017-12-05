@@ -1,6 +1,7 @@
 package ru.isko.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -37,7 +38,6 @@ public class AdminController {
     @Autowired
     private NewsService newsService;
 
-
     @GetMapping("/profile")
     public String getAdminPage(@ModelAttribute("model") ModelMap model, Authentication authentication) {
         model.addAttribute(authenticationService.getUser(authentication));
@@ -50,16 +50,10 @@ public class AdminController {
         return "";
     }
 
-    @GetMapping("/news")
-    public String openNews(@ModelAttribute("model") ModelMap model) {
-        model.addAttribute("news", newsService.sortNews(newsRepository.findByType("News")));
-        model.addAttribute("articles", newsService.sortNews(newsRepository.findByType("Article")));
-        model.addAttribute("blogs", newsService.sortNews(newsRepository.findByType("Blog")));
-        return "admin/admin_news";
-    }
 
     @GetMapping("/homepage")
-    public String openHomepag() {
+    public String openHomepage(@ModelAttribute("model")ModelMap model) {
+//        model.addAttribute("lastnews", newsRepository.getLastNews());
         return "homepage";
     }
 

@@ -32,11 +32,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    //hasAnyAuthority("ADMIN", "USER")
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/user/**").hasAuthority("USER")
+                .antMatchers("/user/**").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/reset/password/**").permitAll()
+                .antMatchers("/editprofile").permitAll()
                 .antMatchers("http://yastatic.net/jquery/2.1.3/**").permitAll()
                 .antMatchers("/confirm/**").permitAll()
                 .antMatchers("/registration/confirm/**").permitAll()

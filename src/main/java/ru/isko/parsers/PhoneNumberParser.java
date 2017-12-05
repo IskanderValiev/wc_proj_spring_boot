@@ -1,5 +1,8 @@
 package ru.isko.parsers;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 /**
  * created by Iskander Valiev
  * on 11/25/17
@@ -11,7 +14,15 @@ package ru.isko.parsers;
 public class PhoneNumberParser {
 
     public String phoneParse(String phoneNumber) {
-        phoneNumber.toCharArray()[0] = '7';
-        return phoneNumber;
+        char[] chars = new char[phoneNumber.length()];
+        chars = phoneNumber.toCharArray();
+        chars[0] = '7';
+        return Arrays.toString(chars);
     }
+
+//    public static void main(String[] args) {
+//        Scanner scanner = new Scanner(System.in);
+//        PhoneNumberParser p = new PhoneNumberParser();
+//        System.out.println(p.phoneParse(scanner.nextLine()));
+//    }
 }

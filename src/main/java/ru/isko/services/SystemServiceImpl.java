@@ -1,6 +1,7 @@
 package ru.isko.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.isko.models.User;
@@ -36,13 +37,13 @@ public class SystemServiceImpl implements SystemService {
     private PasswordGenerator passwordGenerator;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     private ExecutorService executorService = Executors.newCachedThreadPool();
 
     @Transactional
     @Override
-    public void generateLink(Long userId) {
+    public void sendLink(Long userId) {
         Optional<User> existedUser = usersRepository.findById(userId);
 
         if (!existedUser.isPresent()) {
@@ -54,7 +55,8 @@ public class SystemServiceImpl implements SystemService {
         String link = "http://localhost:8080/registration/confirm/" + user.getHashLink();
 
         executorService.submit(() -> {
-            emailService.sendMail("We are glad to see you in our The FIFA World Cup™ 2018 Russia." +
+            emailService.sendMail("<img src=\"/images/background.png\" style=\"width:100%; height:100px;\"> <br><br><br>" +
+                            "We are glad to see you in our The FIFA World Cup™ 2018 Russia." +
                             "Use the link below to confirm your account: <br><br><br>" +
                             "<a href=\"" + link + "\">" + link + "</a> <br><br><br> This is the automatic message, please, do not reply. <br>" +
                             "If you do not know anything about this message, please, ignore it. <br>" +
@@ -77,15 +79,15 @@ public class SystemServiceImpl implements SystemService {
 
         User user = existedUser.get();
 
-        String password = passwordGenerator.generate();
+        String generatedPassword = passwordGenerator.generate();
+        String password = passwordEncoder.encode(generatedPassword);
 
-        user.setPassword(passwordEncoder.encode(password));
-
-        usersRepository.save(user);
+        String resetLink = linkGenerator.generate();
 
         executorService.submit(() -> {
-            emailService.sendMail("You want to reset current password. <br> " +
-                    "New password: " + password + "<br>" +
+            emailService.sendMail("We received request to reset current password for your account. " +
+                            "If you actually want to reset your current password, please, <a href=\"http://localhost:8080/reset/password/" + resetLink + "\">click this link to reset your password</a>. <br> " +
+                    "New password: " + generatedPassword + " <br>" +
                     "You can use this password to enter portal. <br>" +
                             "This is the automatic message, please, do not reply. <br>" +
                             "If you do not know anything about this message, please, ignore it. <br>" +
@@ -95,5 +97,23 @@ public class SystemServiceImpl implements SystemService {
                     "New password for mr. " + user.getLastname(),
                      user.getEmail());
         });
+
+        user.setResetPasswordLink(resetLink);
+        user.setTempPassword(password);
+        usersRepository.save(user);
+    }
+
+    @Override
+    public void resetPassword(String userLink) {
+        Optional<User> user = usersRepository.findByResetPasswordLink(userLink);
+        if (!user.isPresent()) {
+            throw new IllegalArgumentException("There is no user");
+        }
+
+        User existedUser = user.get();
+        existedUser.setPassword(existedUser.getTempPassword());
+        existedUser.setTempPassword(null);
+        usersRepository.save(existedUser);
+
     }
 }

@@ -4,6 +4,8 @@
 <head>
     <title>News</title>
     <link rel="stylesheet" href="/css/homestyle.css">
+    <script src="/js/jquery.js"></script>
+    <script src="/js/post_comment.js"></script>
 </head>
 <body>
 <div class="main">
@@ -70,25 +72,36 @@
                 <div class="comment">
                     <div class="user">
                         <div class="user-photo">
-                            <img src="${comment.author.photo}" style="width: 128px; height: 128px">
+                            <img src="/files/${comment.author.photo.storageFileName}" style="width: 128px; height: 128px">
                         </div>
                         <div class="user-name">
                             ${comment.author.name} ${comment.author.lastname}
+                            <br>
                             ${comment.date}
                         </div>
                     </div>
                     <div class="commentText">
                         ${comment.content}
                     </div>
+                    <#if model.user.role == "ADMIN">
+                        <div class="delete-comment">
+                            <form method="get" action="/admin/delete?id=">
+                                <input type="image" src="/images/delete-32.png" value="${comment.id}">
+                            </form>
+                        </div>
+                    </#if>
                 </div>
             </#list>
             <div class="post-comment">
-                <form action="/postcomment" method="post" class="post-comment-form">
-                    <textarea name="text" rows="15" placeholder="Write comment here..." style="width: 100%; resize: none; border-radius: 10px"></textarea>
-                    <input type="hidden" name="newsId" value="${model.news.id}">
-                    <input type="submit" value="Send.">
+                <#--action="/postcomment" method="post" -->
+                <form class="post-comment-form" id="post-comment-form" >
+                    <textarea type="text" name="content" id="content" rows="15" placeholder="Write comment here..." style="width: 100%; resize: none; border-radius: 10px" form="post-comment-form"></textarea>
+                    <input type="hidden" name="newsId" id="newsId" value="${model.news.id}">
+                    <input type="hidden" name="authorId" id="authorId" value="${model.user.id}">
+                    <button type="submit" id="btn-comment" value="Send.">Send</button>
                 </form>
             </div>
+            <div id="feedback"></div>
         </div>
     </div>
 </div>

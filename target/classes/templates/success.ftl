@@ -4,7 +4,7 @@
     <title>Success</title>
     <style>
         body {
-            background-image: url('http://localhost:8080/images/background.png');
+            background-image: url('/images/background.png');
             color: #CCCC99;
             font-family: DushaV5-Regular;
         }
@@ -44,7 +44,7 @@
 
         .content input[type="submit"] {
             font-family: DushaV5-Regular;
-            background-image: url('http://localhost:8080/images/background.png');
+            background-image: url('/images/background.png');
             color: #CCCC99;
             font-size: 15px;
             cursor: pointer;

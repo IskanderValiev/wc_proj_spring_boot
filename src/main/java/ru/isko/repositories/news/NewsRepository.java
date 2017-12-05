@@ -6,6 +6,6 @@ import ru.isko.models.News;
 
 import java.util.List;
 
-public interface NewsRepository extends JpaRepository<News, Long> {
+public interface NewsRepository extends JpaRepository<News, Long> /*CustomNewsRepository*/ {
     List<News> findByType(String type);
 }

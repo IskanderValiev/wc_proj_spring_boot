@@ -9,7 +9,7 @@
     <div id="header">
         <div id="menu">
             <ul class="menu">
-                <li><a href="/worldcup/homepage.jsp">Homepage</a></li>
+                <li><a href="/profile">Homepage</a></li>
                 <li><a href="/worldcup/matches.jsp">Matches</a>
                     <ul>
                         <li><a href="#">Group A</a></li>
@@ -56,6 +56,7 @@
             <h3>News</h3>
             <#list model.news as news>
                 <div class="newsBlock">
+                    <span style="border-radius: 10px; font-size: 14px; background: #971E00; top: 0; left: 42%; position: absolute; z-index: 2; width: 15%">${news.date}</span>
                     <a href="/user/news/${news.id}">
                     <img src="${news.image}">
                     <div class="news_text">
@@ -94,6 +95,11 @@
             </#list>
         </div>
     </div>
+    <#if model.user.role == "ADMIN">
+        <div class="addnews">
+            <a href="/admin/addnews">Add News</a>
+        </div>
+    </#if>
 </div>
 </body>
 </html>

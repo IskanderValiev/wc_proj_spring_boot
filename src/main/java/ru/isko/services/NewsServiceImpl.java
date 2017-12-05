@@ -22,6 +22,7 @@ public class NewsServiceImpl implements NewsService {
     @Autowired
     private NewsRepository newsRepository;
 
+
     @Override
     public void addNews(NewsForm newsForm) {
         News news = News.builder()
@@ -39,4 +40,9 @@ public class NewsServiceImpl implements NewsService {
         news.sort(new NewsDateComparator());
         return news;
     }
+
+//    @Override
+//    public List<News> getLastNews() {
+//        return customNewsRepository.getLastNews();
+//    }
 }

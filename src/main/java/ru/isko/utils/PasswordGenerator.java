@@ -3,6 +3,7 @@ package ru.isko.utils;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
+import java.util.UUID;
 
 /**
  * created by Iskander Vaiev
@@ -14,21 +15,7 @@ import java.util.Random;
 
 @Component
 public class PasswordGenerator {
-    private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
-    private static final String UPPER = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private static final String DIGITS = "0123456789";
-    private static final String PUNCTUATION = "!@#$%&*()_+-=[]|,./?><";
-
     public String generate() {
-        return generate((LOWER + UPPER + DIGITS + PUNCTUATION).toCharArray(), 20);
-    }
-
-    private String generate(char[] chars, int lenght) {
-        char[] password = new char[lenght];
-        Random random = new Random(System.nanoTime());
-        for (int i = 0; i < lenght; i++) {
-            password[i] = chars[random.nextInt(chars.length)];
-        }
-        return new String(password);
+        return UUID.randomUUID().toString();
     }
 }

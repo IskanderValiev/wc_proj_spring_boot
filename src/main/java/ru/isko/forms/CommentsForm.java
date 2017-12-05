@@ -13,6 +13,6 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 public class CommentsForm {
-    private String text;
+    private String content;
     private Long newsId;
 }

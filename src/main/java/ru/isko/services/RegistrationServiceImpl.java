@@ -58,7 +58,6 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .gender(userForm.isGender())
                 .city(userForm.getCity())
                 .bday(bday)
-                .photo(userForm.getPhoto())
                 .telephone(userForm.getTelephone())
                 .role(Role.USER)
                 .state(State.NOT_CONFIRMED)
@@ -66,7 +65,6 @@ public class RegistrationServiceImpl implements RegistrationService {
                 .build();
         usersRepository.save(user);
         smsService.sendMessage(userForm);
-
         return user;
     }
 

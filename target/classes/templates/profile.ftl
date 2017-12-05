@@ -13,7 +13,7 @@
     <div id="header">
         <div id="menu">
             <ul class="menu">
-                <li><a href="/homepage">Homepage</a></li>
+                <li class="menu-href"><a href="/homepage">Homepage</a></li>
                 <li><a href="/worldcup/matches.jsp">Matches</a>
                     <ul>
                         <li><a href="#">Group A</a></li>
@@ -44,12 +44,12 @@
                 <li><a href="#">Stadiums</a></li>
                 <li><a href="/teams">Teams</a></li>
                 <li><a href="/worldcup/galary.jsp">Galary</a></li>
-                <li><a href="/worldcup/contact.jsp">Contacts</a></li>
+                <li><a href="/templates/contacts.ftl">Contacts</a></li>
             </ul>
         </div>
         <div id="profile-menu">
             <ul class="profile-menu">
-                <li><a href="/profile">Profile</a></li>
+                <li><a href="/">Profile</a></li>
                 <li><a href="/exit">Exit</a></li>
             </ul>
         </div>
@@ -57,7 +57,7 @@
     <hr>
     <div id="content">
         <div class="image">
-            <img src="${model.user.photo}" width="200" height="200" style="background-color: white;">
+            <img src="/files/${model.user.photo.storageFileName}" width="200" height="200" style="background-color: white;">
             <a href=""></a>
         </div>
 

@@ -2,6 +2,7 @@ package ru.isko.services;
 
 public interface SystemService {
 
-    void generateLink(Long userId);
+    void sendLink(Long userId);
     void generateTempPassword(Long userId);
+    void resetPassword(String link);
 }
