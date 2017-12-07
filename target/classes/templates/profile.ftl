@@ -13,7 +13,7 @@
     <div id="header">
         <div id="menu">
             <ul class="menu">
-                <li class="menu-href"><a href="/homepage">Homepage</a></li>
+                <li class="menu-href"><a href="/user/homepage">Homepage</a></li>
                 <li><a href="/worldcup/matches.jsp">Matches</a>
                     <ul>
                         <li><a href="#">Group A</a></li>
@@ -42,9 +42,9 @@
                     </ul>
                 </li>
                 <li><a href="#">Stadiums</a></li>
-                <li><a href="/teams">Teams</a></li>
+                <li><a href="/user/teams">Teams</a></li>
                 <li><a href="/worldcup/galary.jsp">Galary</a></li>
-                <li><a href="/templates/contacts.ftl">Contacts</a></li>
+                <li><a href="/user/contacts">Contacts</a></li>
             </ul>
         </div>
         <div id="profile-menu">

@@ -29,8 +29,6 @@ $( document ).ready(function() {
             dataType : 'json',
             success : function(result) {
                 console.log(result);
-                var json = "<h4>Ajax Response</h4><pre>" + JSON.stringify(result, null, 4) + "</pre>";
-                $("#feedback").html(json);
                 $("#btn-comment").prop("disabled", false);
             },
             error : function(e) {

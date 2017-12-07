@@ -85,7 +85,7 @@
                     </div>
                     <#if model.user.role == "ADMIN">
                         <div class="delete-comment">
-                            <form method="get" action="/admin/delete?id=">
+                            <form method="get" action="/admin/delete/${comment.id}">
                                 <input type="image" src="/images/delete-32.png" value="${comment.id}">
                             </form>
                         </div>

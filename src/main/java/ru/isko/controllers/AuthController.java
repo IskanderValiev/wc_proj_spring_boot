@@ -62,12 +62,7 @@ public class AuthController {
     @GetMapping("/")
     public String root(Authentication authentication) {
         if (authentication != null) {
-            User user = authenticationService.getUser(authentication);
-            if (user.getRole().equals(Role.USER)) {
-                return "redirect:/user/profile";
-            } else if (user.getRole().equals(Role.ADMIN)) {
-                return "redirect:/admin/profile";
-            }
+            return "redirect:/user/profile";
         }
         return "redirect:/signin";
     }

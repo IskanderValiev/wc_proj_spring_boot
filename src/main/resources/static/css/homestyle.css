@@ -432,7 +432,7 @@ td, th {
     -webkit-transform: scale(1.05);
 }
 
-.addnews {
+.add {
     background-color: #971E00;
     border: 2px solid white;
     border-radius: 5px;
@@ -442,7 +442,7 @@ td, th {
     margin: auto;
 }
 
-.addnews a {
+.add a {
     color: #fff;
 }
 

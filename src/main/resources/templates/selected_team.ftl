@@ -1,7 +1,11 @@
+<#ftl encoding='UTF-8'>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>News</title>
+    <title>${model.country}</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Описание">
+    <meta name="author" content="Iskander Valiev">
     <link rel="stylesheet" href="/css/homestyle.css">
 </head>
 <body>
@@ -9,7 +13,7 @@
     <div id="header">
         <div id="menu">
             <ul class="menu">
-                <li><a href="/profile">Homepage</a></li>
+                <li class="menu-href"><a href="/user/homepage">Homepage</a></li>
                 <li><a href="/worldcup/matches.jsp">Matches</a>
                     <ul>
                         <li><a href="#">Group A</a></li>
@@ -38,9 +42,9 @@
                     </ul>
                 </li>
                 <li><a href="#">Stadiums</a></li>
-                <li><a href="/teams">Teams</a></li>
+                <li><a href="/user/teams">Teams</a></li>
                 <li><a href="/worldcup/galary.jsp">Galary</a></li>
-                <li><a href="/worldcup/contact.jsp">Contacts</a></li>
+                <li><a href="/user/contacts">Contacts</a></li>
             </ul>
         </div>
         <div id="profile-menu">
@@ -51,55 +55,35 @@
         </div>
     </div>
     <hr>
-    <div class="news">
-        <div class="type">
-            <h3>News</h3>
-            <#list model.news as news>
-                <div class="newsBlock">
-                    <span style="border-radius: 10px; font-size: 14px; background: #971E00; top: 0; left: 42%; position: absolute; z-index: 2; width: 15%">${news.date}</span>
-                    <a href="/user/news/${news.id}">
-                    <img src="${news.image}">
-                    <div class="news_text">
-                        <div class="news_header">${news.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
+    <div class="content">
+        <div class="country">
+            <h1>${model.country}</h1>
         </div>
-
-        <div class="type">
-            <h3>Articles</h3>
-            <#list model.articles as article>
-                <div class="newsBlock">
-                    <a href="/user/news/${article.id}">
-                    <img src="${article.image}">
-                    <div class="news_text">
-                        <div class="news_header">${article.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
-        </div>
-
-        <div class="type">
-            <h3>Blog</h3>
-            <#list model.blogs as blog>
-                <div class="newsBlock">
-                    <a href="/user/news/${blog.id}">
-                    <img src="${blog.image}">
-                    <div class="news_text">
-                        <div class="news_header">${blog.header}</div>
-                    </div>
-                    </a>
-                </div>
-            </#list>
+        <div class="squad">
+            <table class="teamsquad">
+                <tr>
+                    <th>#</th>
+                    <th>Pos</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                </tr>
+                <#list model.players as player>
+                    <form action="/playerinfo" method="get">
+                        <tr>
+                            <td>${player.number}</td>
+                            <td>${player.position}</td>
+                            <td><input type="submit" name="playerName" value="${player.name}" style="background-color: rgba(0, 0, 0, 0); border: none; color: white;"></td>
+                            <td>${player.lastname}</td>
+                            <td>${player.age}</td>
+                            <td>${model.country}</td>
+                        </tr>
+                    </form>
+                </#list>
+            </table>
         </div>
     </div>
-    <#if model.user.role == "ADMIN">
-        <div class="add">
-            <a href="/admin/add/news">Add News</a>
-        </div>
-    </#if>
 </div>
 </body>
 </html>

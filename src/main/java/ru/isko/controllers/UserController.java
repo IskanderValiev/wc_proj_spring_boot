@@ -57,11 +57,6 @@ public class UserController {
         return "homepage";
     }
 
-    @GetMapping("/contacts")
-    public String openContacts() {
-        return "contacts";
-    }
-
     @GetMapping("/editprofile")
     public String openEditProfilePage(@ModelAttribute("model")ModelMap model, Authentication authentication) {
         model.addAttribute("user", authenticationService.getUser(authentication));
@@ -74,8 +69,9 @@ public class UserController {
     }
 
     @GetMapping("/teams")
-    public String openTeamsPage(@ModelAttribute("model")ModelMap model) {
+    public String openTeamsPage(@ModelAttribute("model")ModelMap model, Authentication authentication) {
         model.addAttribute("countries", countriesRepository.findAll());
+        model.addAttribute("user", authenticationService.getUser(authentication));
         return "teams";
     }
 }

@@ -96,8 +96,8 @@
         </div>
     </div>
     <#if model.user.role == "ADMIN">
-        <div class="addnews">
-            <a href="/admin/addnews">Add News</a>
+        <div class="add">
+            <a href="/admin/add/news">Add News</a>
         </div>
     </#if>
 </div>

@@ -40,6 +40,6 @@ public class Player {
     private Club club;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "player_country_id")
+    @JoinColumn(name = "country.id")
     private Country country;
 }

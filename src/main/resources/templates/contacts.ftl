@@ -3,8 +3,7 @@
 <html>
 <head>
     <title>Contacts</title>
-    <%--<link rel="stylesheet" type="text/css" href="https://vk.com/doc57557145_453569115">--%>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <style type="text/css">
         #content {
             position: relative;
