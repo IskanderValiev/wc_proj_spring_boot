@@ -21,8 +21,9 @@ public class Country {
     @Column(name = "country_name")
     private String name;
 
-    @Column(name = "country_flag")
-    private String flag;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flag")
+    private FileInfo flag;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     private Set<Player> players;

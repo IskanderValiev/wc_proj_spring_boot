@@ -72,98 +72,47 @@
 
 <body onload="initializeTimer()">
 <div class="main">
-    <div class="header">
-        <div id="menu">
-            <ul class="menu">
-                <li><a href="/user/homepage">Homepage</a></li>
-                <li><a href="/worldcup/matches.jsp">Matches</a>
-                    <ul>
-                        <li><a href="#">Group A</a></li>
-                        <li><a href="#">Group B</a></li>
-                        <li><a href="#">Group C</a></li>
-                        <li><a href="#">Group D</a></li>
-                        <li><a href="#">Group E</a></li>
-                        <li><a href="#">Group F</a></li>
-                        <li><a href="#">Group G</a></li>
-                        <li><a href="#">Group H</a></li>
-                    </ul>
-                </li>
-                <li><a href="/worldcup/cities.jsp">Cities</a>
-                    <ul>
-                        <li><a href="#">Kazan</a></li>
-                        <li><a href="#">Moscow</a></li>
-                        <li><a href="#">St. Petersburg</a></li>
-                        <li><a href="#">Sochi</a></li>
-                        <li><a href="#">Kaliningrad</a></li>
-                        <li><a href="#">Saransk</a></li>
-                        <li><a href="#">Nizhniy Novgorod</a></li>
-                        <li><a href="#">Rostov-On-Don</a></li>
-                        <li><a href="#">Volgograd</a></li>
-                        <li><a href="#">Ekaterinburg</a></li>
-                        <li><a href="#">Samara</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Stadiums</a></li>
-                <li><a href="/teams">Teams</a></li>
-                <li><a href="/worldcup/galary.jsp">Galary</a></li>
-                <li><a href="contacts.ftl">Contacts</a></li>
-            </ul>
-        </div>
-        <#--<div class="search">-->
-            <#--<form action="" method="get">-->
-                <#--<input type="text" name="search" placeholder="What are you searching for?">-->
-                <#--<input type="submit">-->
-            <#--</form>-->
-        <#--</div>-->
-        <div id="profile-menu">
-            <ul class="profile-menu">
-                <li><a href="/">Profile</a></li>
-                <li><a href="/exit">Exit</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <hr>
+<#include "system/header.ftl">
 
     <div class="sl">
-        <#--<#list model.lastnews as lastnews>-->
-            <#--<div class="sl_slide"><a href="/user/news/${lastnews.id}"><img src="${lastnews.image}" alt="slide 1" class="sl_img">-->
-                <#--<div class="sl_text">-->
-                    <#--<h3 class="sl_header">${lastnews.header}</h3>-->
-                    <#--&lt;#&ndash;<p class="sl_desc">Spain secure qualification to next year’s World Cup.</p>&ndash;&gt;-->
-                <#--</div>-->
-            <#--</a></div>-->
-        <#--</#list>-->
-        <div class="sl_slide"><a href="#"><img src="homepage/images/spain.jpg" alt="slide 1" class="sl_img">
-            <div class="sl_text">
-                <h3 class="sl_header">Spain secure Russia 2018 berth.</h3>
-                <p class="sl_desc">Spain secure qualification to next year’s World Cup.</p>
-            </div>
-        </a></div>
-        <div class="sl_slide"><a href="#"><img src="homepage/images/germany.jpg" alt="slide 2" class="sl_img">
-            <div class="sl_text">
-                <h3 class="sl_header">Germay finished top of World Cup qualifying Group C and qualified to Russia.</h3>
-                <p class="sl_desc">Defending champions Germany confirmed their qualification for next year's World Cup in Russia by beating Northern Ireland 3-1 in Belfast.</p>
-            </div>
-        </a></div>
-        <div class="sl_slide"><a href="#"><img src="homepage/images/1.jpg" alt="slide 3" class="sl_img">
-            <div class="sl_text">
-                <h3 class="sl_header">Slide 3</h3>
-                <p class="sl_desc">Description 3</p>
-            </div>
-        </a></div>
-        <div class="sl_slide"><a href="#"><img src="homepage/images/england.jpg" alt="slide 4" class="sl_img">
-            <div class="sl_text">
-                <h3 class="sl_header">England’s lions: the late show specialists.</h3>
-                <p class="sl_desc">England qualified for 2018 FIFA World Cup with victory against Slovenia.</p>
-            </div>
-        </a></div>
-        <div class="sl_slide"><a href="#"><img src="homepage/images/sweden.jpg" alt="slide 5" class="sl_img">
-            <div class="sl_text">
-                <h3 class="sl_header">France edge closer as Sweden, Belgium break records.</h3>
-                <p class="sl_desc">The latest European qualifiers ended without any fresh names added to the list of 2018 FIFA World Cup Russia™ participants.</p>
-            </div>
-        </a></div>
+        <#list model.lastnews as lastnews>
+            <div class="sl_slide"><a href="/user/news/${lastnews.id}"><img src="/files/${lastnews.image.storageFileName}" alt="slide 1" class="sl_img">
+                <div class="sl_text">
+                    <h3 class="sl_header">${lastnews.header}</h3>
+                    <#--<p class="sl_desc">Spain secure qualification to next year’s World Cup.</p>-->
+                </div>
+            </a></div>
+        </#list>
+        <#--<div class="sl_slide"><a href="#"><img src="" alt="slide 1" class="sl_img">-->
+            <#--<div class="sl_text">-->
+                <#--<h3 class="sl_header">Spain secure Russia 2018 berth.</h3>-->
+                <#--<p class="sl_desc">Spain secure qualification to next year’s World Cup.</p>-->
+            <#--</div>-->
+        <#--</a></div>-->
+        <#--<div class="sl_slide"><a href="#"><img src="" alt="slide 2" class="sl_img">-->
+            <#--<div class="sl_text">-->
+                <#--<h3 class="sl_header">Germay finished top of World Cup qualifying Group C and qualified to Russia.</h3>-->
+                <#--<p class="sl_desc">Defending champions Germany confirmed their qualification for next year's World Cup in Russia by beating Northern Ireland 3-1 in Belfast.</p>-->
+            <#--</div>-->
+        <#--</a></div>-->
+        <#--<div class="sl_slide"><a href="#"><img src="" alt="slide 3" class="sl_img">-->
+            <#--<div class="sl_text">-->
+                <#--<h3 class="sl_header">Slide 3</h3>-->
+                <#--<p class="sl_desc">Description 3</p>-->
+            <#--</div>-->
+        <#--</a></div>-->
+        <#--<div class="sl_slide"><a href="#"><img src="homepage/images/england.jpg" alt="slide 4" class="sl_img">-->
+            <#--<div class="sl_text">-->
+                <#--<h3 class="sl_header">England’s lions: the late show specialists.</h3>-->
+                <#--<p class="sl_desc">England qualified for 2018 FIFA World Cup with victory against Slovenia.</p>-->
+            <#--</div>-->
+        <#--</a></div>-->
+        <#--<div class="sl_slide"><a href="#"><img src="homepage/images/sweden.jpg" alt="slide 5" class="sl_img">-->
+            <#--<div class="sl_text">-->
+                <#--<h3 class="sl_header">France edge closer as Sweden, Belgium break records.</h3>-->
+                <#--<p class="sl_desc">The latest European qualifiers ended without any fresh names added to the list of 2018 FIFA World Cup Russia™ participants.</p>-->
+            <#--</div>-->
+        <#--</a></div>-->
 
     </div>
 

@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.isko.forms.NewsForm;
 import ru.isko.models.News;
 import ru.isko.repositories.comments.CommentsRepository;
@@ -49,14 +50,14 @@ public class NewsController {
         return "news";
     }
 
-    @GetMapping("/admin/addnews")
+    @GetMapping("/admin/add/news")
     public String addnews() {
         return "admin/addnews";
     }
 
     @PostMapping("/admin/postnews")
-    public String postNews(@ModelAttribute("newsForm") NewsForm newsForm) {
-        newsService.addNews(newsForm);
+    public String postNews(@RequestParam("file")MultipartFile file, @ModelAttribute("newsForm") NewsForm newsForm) {
+        newsService.addNews(file, newsForm);
         return "redirect:/admin/news";
     }
 

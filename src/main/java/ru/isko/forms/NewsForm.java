@@ -15,6 +15,5 @@ import lombok.NoArgsConstructor;
 public class NewsForm {
     private String header;
     private String content;
-    private String image;
     private String type;
 }

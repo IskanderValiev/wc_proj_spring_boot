@@ -26,8 +26,8 @@ public class News {
     @Column(name = "news_content")
     private String content;
 
-    @Column(name = "news_image")
-    private String image;
+//    @Column(name = "news_image")
+//    private String image;
 
     @Column(name = "news_date")
     private Date date;
@@ -37,4 +37,8 @@ public class News {
 
     @OneToMany(mappedBy = "news")
     private Set<Comment> commentSet;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "file_info.id")
+    private FileInfo image;
 }

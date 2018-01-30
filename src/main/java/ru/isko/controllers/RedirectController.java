@@ -29,7 +29,7 @@ public class RedirectController {
     @PostMapping("/editprofile")
     public String edit(EditProfileForm editProfileForm, Authentication authentication) {
         userService.update(authenticationService.getUser(authentication), editProfileForm);
-        return "redirect:/editprofile";
+        return "redirect:/user/profile";
     }
 
 

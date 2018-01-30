@@ -39,7 +39,7 @@ public class FileStorageUtil {
         Files.copy(file.getInputStream(), Paths.get(storagePath, storageFileName));
     }
 
-    public FileInfo convertFromMultipart(MultipartFile file, Authentication authentication) {
+    public FileInfo convertFromMultipart(MultipartFile file) {
         //getting file name
         String originalFileName = file.getOriginalFilename();
 

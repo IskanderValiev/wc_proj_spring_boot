@@ -36,4 +36,10 @@ public class FileInfo {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "photo")
     private List<User> user;
+
+    @OneToOne(mappedBy = "image")
+    private News news;
+
+    @OneToOne(mappedBy = "flag")
+    private Country country;
 }

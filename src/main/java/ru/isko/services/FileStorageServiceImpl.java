@@ -32,9 +32,9 @@ public class FileStorageServiceImpl implements FileStorageService {
     private FileStorageUtil fileStorageUtil;
 
     @Override
-    public String saveFile(MultipartFile file, Authentication authentication) {
+    public String saveFile(MultipartFile file) {
         //convert into database object
-        FileInfo fileInfo = fileStorageUtil.convertFromMultipart(file, authentication);
+        FileInfo fileInfo = fileStorageUtil.convertFromMultipart(file);
         //save information about file
         fileInfoRepository.save(fileInfo);
         //move to our disk

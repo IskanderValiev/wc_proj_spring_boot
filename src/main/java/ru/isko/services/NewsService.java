@@ -1,5 +1,6 @@
 package ru.isko.services;
 
+import org.springframework.web.multipart.MultipartFile;
 import ru.isko.forms.NewsForm;
 import ru.isko.models.News;
 
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface NewsService {
 
-    void addNews(NewsForm newsForm);
+    void addNews(MultipartFile file, NewsForm newsForm);
     List<News> sortNews(List<News> news);
-//    List<News> getLastNews();
+    List<News> getLastNews();
 }

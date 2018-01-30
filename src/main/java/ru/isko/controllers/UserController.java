@@ -7,19 +7,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import ru.isko.forms.CommentsForm;
-import ru.isko.forms.EditProfileForm;
-import ru.isko.models.News;
-//import ru.isko.repositories.news.CustomNewsRepository;
 import ru.isko.repositories.countries.CountriesRepository;
 import ru.isko.repositories.news.NewsRepository;
 import ru.isko.services.AuthenticationService;
 import ru.isko.services.NewsService;
 import ru.isko.services.UserService;
-
-import java.util.List;
 
 /**
  * created by Iskander Valiev
@@ -54,6 +47,7 @@ public class UserController {
 
     @GetMapping("/homepage")
     public String openHomepage(@ModelAttribute("model")ModelMap model) {
+        model.addAttribute("lastnews", newsService.getLastNews());
         return "homepage";
     }
 

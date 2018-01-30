@@ -37,7 +37,6 @@ public class TeamsController {
     public String addTeam(TeamsForm teamsForm) {
         countriesRepository.save(Country.builder()
                                 .name(teamsForm.getCountryName())
-                                .flag(teamsForm.getFlag())
                                 .build());
         return "redirect:/user/teams";
     }

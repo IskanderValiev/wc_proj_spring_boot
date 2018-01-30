@@ -42,7 +42,7 @@ public class StorageController {
 
     @PostMapping("/files")
     public ResponseEntity<String> handleFileUpload(@RequestParam("file")MultipartFile file, Authentication authentication) {
-        String filePath = fileStorageService.saveFile(file, authentication);
+        String filePath = fileStorageService.saveFile(file);
 
         FileInfo fileInfo = fileInfoRepository.findOneByStorageFileName(filePath);
         User user = authenticationService.getUser(authentication);

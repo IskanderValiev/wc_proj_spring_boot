@@ -3,6 +3,16 @@
 <head>
     <title>Add news</title>
     <link rel="stylesheet" href="/css/homestyle.css">
+    <script>
+        function sendFile(file) {
+            var formData = new FormData();
+            formData.append("file", file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/admin/postnews", true);
+            xhr.send(formData);
+        }
+    </script>
 </head>
 <body>
 <div class="main">
@@ -52,16 +62,20 @@
     </div>
     <hr>
     <div class="newnews">
-        <form action="/admin/postnews" method="post">
+        <form action="/admin/postnews" method="post" enctype="multipart/form-data">
             <input type="text" name="header" placeholder="news header">
             <textarea name="content" rows="20"></textarea>
-            <input type="text" name="image" placeholder="image path">
+            <#--<input type="text" name="image" placeholder="image path">-->
             <select name="type">
                 <option disabled>Choose news type</option>
                 <option name="type" value="News">News</option>
                 <option name="type" value="Article">Article</option>
                 <option name="type" value="Blog">Blog</option>
             </select>
+            <input type="file" name="file" id="file" style="width: 100%; margin: 0 0 0 0; float: left">
+            <button onclick="sendFile(($('#file'))[0]['files'][0])" class="btn">Upload file</button>
+            <input type="hidden" id="file_hidden">
+            <div class="filename"></div>
             <input type="submit" value="Add news">
         </form>
     </div>
