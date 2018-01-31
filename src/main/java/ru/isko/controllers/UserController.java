@@ -7,9 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.isko.repositories.countries.CountriesRepository;
 import ru.isko.repositories.news.NewsRepository;
+import ru.isko.repositories.users.UsersRepository;
 import ru.isko.services.AuthenticationService;
 import ru.isko.services.NewsService;
 import ru.isko.services.UserService;
@@ -36,6 +38,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private UsersRepository usersRepository;
 
     @Autowired
     private CountriesRepository countriesRepository;
@@ -67,5 +72,14 @@ public class UserController {
         model.addAttribute("countries", countriesRepository.findAll());
         model.addAttribute("user", authenticationService.getUser(authentication));
         return "teams";
+    }
+
+    @GetMapping("/profile/{user-id}")
+    public String getUserProfileImage(@ModelAttribute("model")ModelMap model, @PathVariable("user-id")Long id, Authentication authentication) {
+        if (authenticationService.getUser(authentication).getId() == id) {
+            return "redirect:/user/profile";
+        }
+        model.addAttribute("user", usersRepository.findOne(id));
+        return "user_profile";
     }
 }

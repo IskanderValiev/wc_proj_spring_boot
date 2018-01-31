@@ -6,8 +6,8 @@
     <meta name="description" content="Описание">
     <meta name="author" content="Iskander Valiev">
     <!-- Стили -->
-    <link rel="stylesheet" href="homepage/slick/slick.css">
-    <link rel="stylesheet" href="homepage/slick/slick-theme.css">
+    <link rel="stylesheet" href="/js/slick/slick.css">
+    <link rel="stylesheet" href="/js/slick/slick-theme.css">
     <link rel="stylesheet" href="/css/homestyle.css">
     <script type="text/javascript">
         function initializeTimer() {
@@ -83,37 +83,6 @@
                 </div>
             </a></div>
         </#list>
-        <#--<div class="sl_slide"><a href="#"><img src="" alt="slide 1" class="sl_img">-->
-            <#--<div class="sl_text">-->
-                <#--<h3 class="sl_header">Spain secure Russia 2018 berth.</h3>-->
-                <#--<p class="sl_desc">Spain secure qualification to next year’s World Cup.</p>-->
-            <#--</div>-->
-        <#--</a></div>-->
-        <#--<div class="sl_slide"><a href="#"><img src="" alt="slide 2" class="sl_img">-->
-            <#--<div class="sl_text">-->
-                <#--<h3 class="sl_header">Germay finished top of World Cup qualifying Group C and qualified to Russia.</h3>-->
-                <#--<p class="sl_desc">Defending champions Germany confirmed their qualification for next year's World Cup in Russia by beating Northern Ireland 3-1 in Belfast.</p>-->
-            <#--</div>-->
-        <#--</a></div>-->
-        <#--<div class="sl_slide"><a href="#"><img src="" alt="slide 3" class="sl_img">-->
-            <#--<div class="sl_text">-->
-                <#--<h3 class="sl_header">Slide 3</h3>-->
-                <#--<p class="sl_desc">Description 3</p>-->
-            <#--</div>-->
-        <#--</a></div>-->
-        <#--<div class="sl_slide"><a href="#"><img src="homepage/images/england.jpg" alt="slide 4" class="sl_img">-->
-            <#--<div class="sl_text">-->
-                <#--<h3 class="sl_header">England’s lions: the late show specialists.</h3>-->
-                <#--<p class="sl_desc">England qualified for 2018 FIFA World Cup with victory against Slovenia.</p>-->
-            <#--</div>-->
-        <#--</a></div>-->
-        <#--<div class="sl_slide"><a href="#"><img src="homepage/images/sweden.jpg" alt="slide 5" class="sl_img">-->
-            <#--<div class="sl_text">-->
-                <#--<h3 class="sl_header">France edge closer as Sweden, Belgium break records.</h3>-->
-                <#--<p class="sl_desc">The latest European qualifiers ended without any fresh names added to the list of 2018 FIFA World Cup Russia™ participants.</p>-->
-            <#--</div>-->
-        <#--</a></div>-->
-
     </div>
 
     <div class="information">
@@ -171,7 +140,7 @@
 <!-- Конец кода -->
 <!-- Подключаем скрипты -->
 <script src = "http://yastatic.net/jquery/2.1.3/jquery.min.js"></script>
-<script src="homepage/slick/slick.min.js"></script>
-<script src="homepage/js/js.js"></script>
+<script src="/js/slick/slick.min.js"></script>
+<script src="/js/js.js"></script>
 </body>
 </html>

@@ -6,8 +6,8 @@
     <meta name="description" content="Описание">
     <meta name="author" content="Iskander Valiev">
     <!-- Стили -->
-    <link rel="stylesheet" href="homepage/slick/slick.css">
-    <link rel="stylesheet" href="homepage/slick/slick-theme.css">
+    <link rel="stylesheet" href="/js/slick/slick.css">
+    <link rel="stylesheet" href="/js/slick/slick-theme.css">
     <link rel="stylesheet" href="/css/homestyle.css">
     <script type="text/javascript">
         function initializeTimer() {
@@ -140,7 +140,7 @@
 <!-- Конец кода -->
 <!-- Подключаем скрипты -->
 <script src = "http://yastatic.net/jquery/2.1.3/jquery.min.js"></script>
-<script src="homepage/slick/slick.min.js"></script>
-<script src="homepage/js/js.js"></script>
+<script src="/js/slick/slick.min.js"></script>
+<script src="/js/js.js"></script>
 </body>
 </html>
