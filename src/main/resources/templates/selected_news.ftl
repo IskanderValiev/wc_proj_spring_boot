@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="main">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
     <div class="newsImage">
         <img src="/files/${model.news.image.storageFileName}">
     </div>

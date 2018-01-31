@@ -52,7 +52,7 @@ public class FileStorageUtil {
         //creating file name
         String storageName = createStorageName(originalFileName);
 
-        //get url file (access inside system)
+        //get url file (access inside tags)
         String fileUrl = getUrlOfFile(storageName);
         return FileInfo.builder()
                 .originalFileName(originalFileName)

@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="container">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
     <div class="content">
         <div class="add-team-form">
             <form action="/admin/add/team" method="post">

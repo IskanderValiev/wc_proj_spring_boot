@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="main">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
     <div class="teams">
         <#list model.countries as country>
             <form action="/user/team/${country.id}/players" method="get">

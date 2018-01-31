@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="main">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
     <div class="content">
         <div class="country">
             <h1>${model.country}</h1>

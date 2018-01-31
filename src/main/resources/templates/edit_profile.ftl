@@ -43,7 +43,7 @@
 </head>
 <body>
 <div id="container">
-    <#include "system/header.ftl">
+    <#include "tags/header.ftl">
     <div id="content">
         <div class="image">
             <img src="/files/${model.user.photo.storageFileName}" width="200" height="200">

@@ -72,7 +72,7 @@
 
 <body onload="initializeTimer()">
 <div class="main">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
 
     <div class="sl">
         <#list model.lastnews as lastnews>

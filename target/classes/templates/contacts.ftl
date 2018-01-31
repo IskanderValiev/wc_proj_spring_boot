@@ -40,7 +40,7 @@
 </head>
 <body>
 <div id="container">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
 
 
     <div id="content">

@@ -10,11 +10,9 @@ import ru.isko.forms.NewsForm;
 import ru.isko.models.News;
 import ru.isko.repositories.comments.CommentsRepository;
 import ru.isko.repositories.news.NewsRepository;
-import ru.isko.security.role.Role;
 import ru.isko.services.AuthenticationService;
 import ru.isko.services.CommentService;
 import ru.isko.services.NewsService;
-import ru.isko.utils.Response;
 
 /**
  * created by Iskander Valiev

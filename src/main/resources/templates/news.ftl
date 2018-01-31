@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="main">
-<#include "system/header.ftl">
+<#include "tags/header.ftl">
     <div class="news">
         <div class="type">
             <h3>News</h3>

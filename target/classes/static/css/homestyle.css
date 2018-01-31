@@ -520,6 +520,7 @@ td, th {
 .comments {
     width: 80%;
     margin: auto;
+    color: white;
 }
 
 .comment {
@@ -537,6 +538,7 @@ td, th {
     width: 20%;
     height: 100%;
     margin: 10px 10px 10px 10px;
+    color: white;
 }
 
 .commentText {
@@ -544,6 +546,7 @@ td, th {
     width: 70%;
     height: 100%;
     margin: 10px 10px 10px 10px;
+    color: white;
 }
 
 
